@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+.store-container {
+  width: 80vw;
+  height: 100%;
+  margin: 0 auto;
+}
