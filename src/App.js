@@ -6,9 +6,7 @@ import store from './store'
 function App() {
   return (
     <Provider store={store}>
-      <div className="store-container">
-        <Store />
-      </div>
+      <Store />
     </Provider>
   )
 }

@@ -1,37 +1,29 @@
-import { useState, useEffect, useCallback } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { loadProductsAction } from '../../store/cartActions'
-import { cartSelectors } from '../../store/cartSelectors'
-
-function StoreProduct({ item }) {
-  return <li>{item.title}</li>
-}
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { articlesSelectors } from '../../store/articlesSelectors'
+import StoreProduct from '../StoreProduct'
+import Cart from '../Cart'
 
 export default function Store() {
-  const dispatch = useDispatch()
-  const fetchData = useCallback(() => {
-    fetch('https://fakestoreapi.com/products')
-      .then((res) => res.json())
-      .then((json) => {
-        dispatch(loadProductsAction(json))
-      })
-  }, [dispatch])
-
-  //const [products, setProducts] = useState()
-  const products = useSelector(cartSelectors)
-  console.log(useSelector(cartSelectors))
-  useEffect(() => {
-    fetchData()
-  }, [fetchData])
+  const products = useSelector(articlesSelectors)
+  const [showCart, setShowCart] = useState(false)
+  const toggleCart = () => setShowCart(!showCart)
   return (
-    !!products?.length && (
-      <ul>
-        {products.map((p) => (
-          <StoreProduct item={p} />
-        ))}
-      </ul>
-    )
+    <>
+      <header>
+        <h1>Redux Boutique</h1>
+        <button onClick={toggleCart}>Show cart</button>
+      </header>
+      <div className="store-container">
+        {!!products?.length && (
+          <ul className="products-list">
+            {products.map((p) => (
+              <StoreProduct product={p} />
+            ))}
+          </ul>
+        )}
+        {showCart && <Cart toggleCart={toggleCart} />}
+      </div>
+    </>
   )
-
-  //<h1>{JSON.stringify(products)}</h1>
 }
