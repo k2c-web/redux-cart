@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux'
 import { productsSelectors } from './../../store/productsSelector'
+import './styles.css'
 
 export default function Cart({ toggleCart }) {
   const products = useSelector(productsSelectors)
@@ -24,7 +25,10 @@ export default function Cart({ toggleCart }) {
                 <tr>
                   <td>{p.title}</td>
                   <td>{p.description}</td>
-                  <td>{p.price}</td>
+                  <td>
+                    {p.price * p.quantity}
+                    <br />({p.price} each)
+                  </td>
                   <td>{!!p.quantity ? p.quantity : 1}</td>
                   <td>x</td>
                 </tr>

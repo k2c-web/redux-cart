@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux'
 import { articlesSelectors } from '../../store/articlesSelectors'
 import StoreProduct from '../StoreProduct'
 import Cart from '../Cart'
+import Header from '../Header'
+import './styles.css'
 
 export default function Store() {
   const products = useSelector(articlesSelectors)
@@ -10,10 +12,7 @@ export default function Store() {
   const toggleCart = () => setShowCart(!showCart)
   return (
     <>
-      <header>
-        <h1>Redux Boutique</h1>
-        <button onClick={toggleCart}>Show cart</button>
-      </header>
+      <Header />
       <div className="store-container">
         {!!products?.length && (
           <ul className="products-list">

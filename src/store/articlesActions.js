@@ -1,4 +1,5 @@
 export const GET_ARTICLES = 'GET_ARTICLES'
+export const FILTER_ARTICLES = 'FILTER_ARTICLES'
 
 export const getArticles = () => {
   return (dispatch) => {
@@ -8,4 +9,8 @@ export const getArticles = () => {
         dispatch({ type: GET_ARTICLES, payload: data })
       })
   }
+}
+
+export const filterArticles = (value) => {
+  return { type: FILTER_ARTICLES, payload: value }
 }
