@@ -27,7 +27,7 @@ export default function Store() {
 
 const Style = styled.div`
   position:relative;
-  padding: 0 10%;
+  padding: 0 5%;
   margin-top: 40px;
 `
 

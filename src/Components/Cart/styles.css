@@ -10,7 +10,7 @@
 }
 
 .cart-inner {
-  padding:0 10%;
+  padding:0 5%;
 }
 
 
@@ -24,6 +24,14 @@
   text-transform: lowercase;
   color: rgb(223, 169, 163);
   font-variant: small-caps;
+ 
+}
+
+ 
+@media (max-width: 480px) {
+  th{
+    display: none
+  }
 }
 
 .cart-container table,
@@ -43,4 +51,8 @@
 
 .total-price {
   text-align:right;
+}
+
+.change-quantity input {
+  width: 25px;
 }

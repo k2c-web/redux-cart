@@ -31,7 +31,6 @@ export default function Cart() {
             <thead>
               <tr>
                 <th>Title</th>
-                <th>Unit Price</th>
                 <th>Quantity</th>
                 <th>Total</th>
                 <th>Remove</th>
@@ -42,8 +41,7 @@ export default function Cart() {
                 return (
                   <tr key={p.id}>
                     <td>{p.title}</td>
-                    <td>{p.price}</td>
-                    <td>
+                    <td className={"change-quantity"}>
                       <input
                         type="number"
                         min="1"
@@ -66,7 +64,7 @@ export default function Cart() {
                 )
               })}
               
-            <tr><td className='total-price' colSpan="5">Prix total : {sum}</td></tr>
+            <tr><td className='total-price' colSpan="4">Prix total : {sum}</td></tr>
             </tbody>
           </table>
           : <h1>Empty Cart</h1>}
