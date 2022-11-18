@@ -21,18 +21,20 @@ function StoreProduct({ product }) {
         <img src={product.image} alt={product.title}></img>
       </div>
       <div className="product-action">
+        <div>
+          <label htmlFor="quantity">
+            Quantity :
+            <input
+              type="number"
+              id="quantity"
+              min="1"
+              max="5"
+              defaultValue="1"
+              ref={quantityRef}
+            />
+          </label>
+        </div>
         <button onClick={() => addToCart(product)}>Add To Cart</button>
-        <label htmlFor="quantity">
-          Quantity
-          <input
-            type="number"
-            id="quantity"
-            min="1"
-            max="5"
-            defaultValue="1"
-            ref={quantityRef}
-          />
-        </label>
       </div>
     </div>
   )

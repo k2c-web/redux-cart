@@ -1,28 +1,33 @@
-import { useState } from 'react'
+
+import styled from '@emotion/styled'
+import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { articlesSelectors } from '../../store/articlesSelectors'
-import StoreProduct from './StoreProduct'
+import Products from '../Products'
 import Cart from '../Cart'
 import Header from '../Header'
-import './styles.css'
+
+const isCart = document.location.pathname=== "/cart"
+
 
 export default function Store() {
-  const products = useSelector(articlesSelectors)
+  const articles = useSelector(articlesSelectors)
   const [showCart, setShowCart] = useState(false)
   const toggleCart = () => setShowCart(!showCart)
   return (
     <>
-      <Header toggleCart={toggleCart} />
-      <div className="store-container">
-        {!!products?.length && (
-          <ul className="products-list">
-            {products.map((p) => (
-              <StoreProduct product={p} key={p.id} />
-            ))}
-          </ul>
-        )}
+      <Header toggleCart={toggleCart} showCart={showCart}/>
+      <Style>
+        <Products products={articles}/>
         {showCart && <Cart toggleCart={toggleCart} />}
-      </div>
+      </Style>
     </>
   )
 }
+
+const Style = styled.div`
+  position:relative;
+  padding: 0 10%;
+  margin-top: 40px;
+`
+

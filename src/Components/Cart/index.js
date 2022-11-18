@@ -4,25 +4,29 @@ import { productsSelectors } from './../../store/productsSelector'
 import { useDispatch } from 'react-redux'
 import './styles.css'
 
-export default function Cart({ toggleCart }) {
+export default function Cart() {
   const dispatch = useDispatch()
   const products = useSelector(productsSelectors)
 
   const removeFromCart = (p) => {
     dispatch(removeProduct(p))
   }
+
   const onQuantityChange = (e, p) => {
     const newQuantity = e.target.value
     p.quantity = newQuantity
     dispatch(changeQuantity(p.id, newQuantity))
   }
+  
+    const sum = products.reduce((prev, cur) => {
+      console.log(prev)
+      return prev + (cur.price * cur.quantity)
+    }, 0)
+
   return (
-    !!products?.length && (
       <div className="cart-container">
-        <div onClick={toggleCart} className="close">
-          x
-        </div>
         <div className="cart-inner">
+          {products.length > 0 ?
           <table>
             <thead>
               <tr>
@@ -61,10 +65,12 @@ export default function Cart({ toggleCart }) {
                   </tr>
                 )
               })}
+              
+            <tr><td className='total-price' colSpan="5">Prix total : {sum}</td></tr>
             </tbody>
           </table>
+          : <h1>Empty Cart</h1>}
         </div>
       </div>
-    )
   )
 }
