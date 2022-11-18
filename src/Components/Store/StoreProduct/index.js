@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { addProduct } from './../../store/productsActions'
+import { addProduct } from '../../../store/productsActions'
 import { useDispatch } from 'react-redux'
 import './styles.css'
 

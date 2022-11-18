@@ -1,8 +1,9 @@
 import { useEffect, useState, useRef } from 'react'
-import './styles.css'
 import { useSelector } from 'react-redux'
 import { articlesSelectors } from '../../store/articlesSelectors'
 import { filterArticles } from '../../store/articlesActions'
+
+import './styles.css'
 
 import { useDispatch } from 'react-redux'
 export default function Select() {

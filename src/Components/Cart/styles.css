@@ -42,3 +42,7 @@
 .cart-container td {
   border: 1px solid white;
 }
+
+.remove-from-cart {
+  cursor: pointer;
+}

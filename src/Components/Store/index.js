@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { articlesSelectors } from '../../store/articlesSelectors'
-import StoreProduct from '../StoreProduct'
+import StoreProduct from './StoreProduct'
 import Cart from '../Cart'
 import Header from '../Header'
 import './styles.css'
@@ -12,12 +12,12 @@ export default function Store() {
   const toggleCart = () => setShowCart(!showCart)
   return (
     <>
-      <Header />
+      <Header toggleCart={toggleCart} />
       <div className="store-container">
         {!!products?.length && (
           <ul className="products-list">
             {products.map((p) => (
-              <StoreProduct product={p} />
+              <StoreProduct product={p} key={p.id} />
             ))}
           </ul>
         )}

@@ -22,7 +22,8 @@
 .product-image img {
   display: block;
   height: 200px;
-  width: 200px;
+  width: 80%;
+  margin: 0 auto;
   object-fit: cover;
 }
 
