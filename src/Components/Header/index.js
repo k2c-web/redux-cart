@@ -1,4 +1,4 @@
-//import Select from '../Select'
+
 import styled from '@emotion/styled'
 import { useSelector } from 'react-redux'
 import { productsSelectors } from './../../store/productsSelector'

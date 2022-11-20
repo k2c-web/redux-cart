@@ -2,11 +2,13 @@
   width: 100%;
   box-sizing: border-box;
   border: var(--items-border);
-  padding: 20px;
+  padding: 14px;
   margin: 0;
   display: flex;
   flex-flow: column;
   align-items: center;
+  position: relative;
+  box-shadow: 0 5px 10px lavender;
 }
 
 .product-category {
@@ -19,7 +21,7 @@
 }
 
 .product-image {
-  margin: 20px 0 0 0;
+  margin: 14px 0 0 0;
   background:white;
   padding: 20px;
   border-radius: 10px;
@@ -43,20 +45,24 @@
   margin: 10px 0 0 0;
   background: white;
   padding: 2px 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
 }
 
 .product-action {
  display:flex;
  flex-direction: column;
  justify-content: center;
- margin: 20px 0;
+ margin: 10px 0;
 }
 
 
 .product-action input {
   width: 30px;
   margin-left: 4px;
-  text-align:center;
+  text-align: center;
 }
 
 
