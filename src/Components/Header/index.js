@@ -20,20 +20,27 @@ export default function Header({showCart, toggleCart}) {
 
 const Root = styled.header`
   box-sizing:border-box;
-  padding: 0 5%;
+  padding: var(--main-horizontal-padding);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: indigo;
-  color: lavender;
-  box-shadow: 0px 3px 30px 20px lavenderblush;
+  background: var(--primary-color);
+  color: var(--secondary-color);
+
+  h1 {
+    color: inherit;
+    text-transform: lowercase;
+    font-variant: small-caps;
+  }
 
   button {
     font-size:16px;
     border-radius: 5px;
-    background; white;
+    background: var(--secondary-color);
     padding: 12px 20px;
     border:none;
-    box-shadow: 7px 5px 100px 10px lavenderblush;
+    text-transform: lowercase;
+    font-variant: small-caps;
+    box-shadow: 7px 5px 100px 10px var(--secondary-color);
   }
 `
