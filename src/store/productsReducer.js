@@ -1,31 +1,39 @@
 import { ADD_PRODUCT } from './productsActions'
 import { REMOVE_PRODUCT } from './productsActions'
 import { CHANGE_QUANTITY } from './productsActions'
-export function productsReducer(state = [], action) {
+
+const initialState = JSON.parse(localStorage.getItem('redux-cart')) || []
+
+const store = (newState) => {
+  const lsString = JSON.stringify(newState)
+  localStorage.setItem('redux-cart', lsString)
+  return newState
+} 
+
+export function productsReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_PRODUCT:
       let newProduct = true
       const newArr = state.map((s) => {
         if (action.payload.id === s.id) {
           newProduct = false
-          if (s.quantity) {
-            ++s.quantity
-          } else {
-            s.quantity = 2
-          }
+          s.quantity = parseInt(action.payload.quantity, 10) + parseInt(s.quantity, 10)
         }
         return s
       })
-      return newProduct ? [...state, action.payload] : newArr
+      const newState = newProduct ? [...state, action.payload] : newArr
+      return store(newState)
     case REMOVE_PRODUCT:
-      return state.filter((s) => s.id !== action.payload.id)
+      const rmvState = state.filter((s) => s.id !== action.payload.id)
+      return store(rmvState)
     case CHANGE_QUANTITY:
-      return state.map((s) => {
+      const changeState = state.map((s) => {
         if (action.payload.id === s.id) {
           s.quantity = action.payload.quantity
         }
         return s
       })
+      return store(changeState)
     default:
       return state
   }

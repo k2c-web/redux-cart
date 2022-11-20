@@ -5,21 +5,18 @@ import { useDispatch } from 'react-redux'
 import './styles.css'
 
 export default function Cart() {
-  const dispatch = useDispatch()
-  const products = useSelector(productsSelectors)
+    const dispatch = useDispatch()
+    const products = useSelector(productsSelectors)
 
-  const removeFromCart = (p) => {
-    dispatch(removeProduct(p))
-  }
+    const removeFromCart = (p) => dispatch(removeProduct(p))
 
-  const onQuantityChange = (e, p) => {
-    const newQuantity = e.target.value
-    p.quantity = newQuantity
-    dispatch(changeQuantity(p.id, newQuantity))
-  }
+    const onQuantityChange = (e, p) => {
+      const newQuantity = e.target.value
+      p.quantity = newQuantity
+      dispatch(changeQuantity(p.id, newQuantity))
+    }
   
     const sum = products.reduce((prev, cur) => {
-      console.log(prev)
       return prev + (cur.price * cur.quantity)
     }, 0)
 
@@ -41,7 +38,7 @@ export default function Cart() {
                 return (
                   <tr key={p.id}>
                     <td>{p.title}</td>
-                    <td className={"change-quantity"}>
+                    <td className="change-quantity">
                       <input
                         type="number"
                         min="1"

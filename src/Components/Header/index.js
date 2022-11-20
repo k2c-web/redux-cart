@@ -5,10 +5,15 @@ import { productsSelectors } from './../../store/productsSelector'
 
 export default function Header({showCart, toggleCart}) {
   const products = useSelector(productsSelectors)
+
+  const quantity = products.reduce((prev, cur) => {
+    return parseInt(prev, 10) + parseInt(cur.quantity, 10)
+  }, 0)
+
   return (
     <Root>
       <h1>R-Shop</h1>
-      <button onClick={toggleCart}>{!!showCart ? "View products" : `View Cart (${products.length})`}</button>
+      <button onClick={toggleCart}>{!!showCart ? "View products" : `View Cart (${quantity})`}</button>
     </Root>
   )
 }
